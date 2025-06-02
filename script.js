@@ -52,26 +52,31 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Form submission handler
-document.querySelector('.contact-form form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  // Get form data
-  const formData = new FormData(this);
-  const name = this.querySelector('input[type="text"]').value;
-  const email = this.querySelector('input[type="email"]').value;
-  const program = this.querySelector('select').value;
-  const message = this.querySelector('textarea').value;
-  
-  // Simple validation
-  if (!name || !email || !message) {
-    alert('Please fill in all required fields.');
-    return;
+// Form submission handler (only if contact form exists)
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.querySelector('.contact-form form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(this);
+      const name = this.querySelector('input[type="text"]').value;
+      const email = this.querySelector('input[type="email"]').value;
+      const program = this.querySelector('select').value;
+      const message = this.querySelector('textarea').value;
+      
+      // Simple validation
+      if (!name || !email || !message) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      
+      // Simulate form submission
+      alert('Thank you for your message! We will get back to you soon.');
+      this.reset();
+    });
   }
-  
-  // Simulate form submission
-  alert('Thank you for your message! We will get back to you soon.');
-  this.reset();
 });
 
 // Add click handlers for hero buttons
